@@ -1,0 +1,10 @@
+USE hw6;
+GO
+
+SELECT s.Title, a.[Name], g.Title 
+FROM dbo.Songs AS s
+INNER JOIN dbo.Genres AS g ON s.GenreId = g.Id
+INNER JOIN dbo.ArtistSongs AS artson ON artson.SongId = s.Id
+INNER JOIN dbo.Artists AS a ON a.Id = artson.ArtistId;
+
+SELECT * FROM Songs AS s WHERE s.ReleasedDate < (SELECT MIN(DateOfBirth) FROM Artists AS a);
